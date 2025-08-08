@@ -1,11 +1,15 @@
 'use strict';
 
-const links = [...document.getElementsByClassName('list-item__link')];
+const list = document.querySelector('.gallery__list');
 const mainFoto = document.querySelector('.gallery__large-img');
 
-links.forEach((link) => {
-  link.addEventListener('click', (even) => {
-    even.preventDefault();
-    mainFoto.src = link.href;
-  });
+list.addEventListener('click', (e) => {
+  const link = e.target.closest('.list-item__link');
+
+  if (!link) {
+    return;
+  }
+
+  e.preventDefault();
+  mainFoto.src = link.href;
 });
